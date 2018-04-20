@@ -8,12 +8,6 @@
 
 import Foundation
 
-// Get the user input
-var rawInput = readLine()
-
-// Print out the input provided
-print("You said:")
-print(rawInput)
 
 //============================================Make sure input is acceptable=============================================\\
 
@@ -23,8 +17,7 @@ var validInput = 0
 while 1 == 1 {
     
     // Make sure input is not nil
-    guard let givenInput = readLine() else
-    {
+    guard let givenInput = readLine() else {
         print("Please enter an integer between 1 and 10000")
         continue
     }
@@ -36,7 +29,7 @@ while 1 == 1 {
     }
     
     // Is the input between 1 and 32500
-    if givenInteger <= 1 || givenInteger >= 10000 {
+    if givenInteger < 1 || givenInteger > 10000 {
         print("Please enter an integer between 1 and 10000")
         continue
     }
@@ -57,45 +50,61 @@ var fourthNumber = 0
 outer: while 1 == 1 {
 
     // Find first number and set holder value
+    
+        switch numberOfCharacters {
+        case 1:
+
+        case 2:
+
+        case 3:
+
+        case 4:
+
+        case 5:
+          print("The next year with distinct digits will be ()")
+
+    }
+    
     holderValue = validInput % 1000
     firstNumber = validInput / 1000
 
     // Find second number and adjust holder value
-    secondNumber = holderValue / 1000
-    holderValue = holderValue % 1000
+    secondNumber = holderValue / 100
+    holderValue = holderValue % 100
 
     // Find third number
-    thirdNumber = holderValue / 1000
+    thirdNumber = holderValue / 10
 
     // Find fouth number
-    fourthNumber = holderValue % 1000
+    fourthNumber = holderValue % 10
 
 //========================================Find next year with distinct digits===========================================\\
 
     inner: while 1 == 1 {
     
-        if firstNumber != secondNumber || firstNumber != thirdNumber || firstNumber != fourthNumber {
-            continue
-        } else {
+        if firstNumber == secondNumber || firstNumber == thirdNumber || firstNumber == fourthNumber {
             validInput = validInput + 1
+            continue outer
         }
-        if secondNumber != thirdNumber || secondNumber != fourthNumber {
-            continue
-        } else {
+        
+        if secondNumber == thirdNumber || secondNumber == fourthNumber {
             validInput = validInput + 1
+            continue outer
         }
-        if thirdNumber != fourthNumber {
-            continue
-        } else {
+            
+        if thirdNumber == fourthNumber {
             validInput = validInput + 1
+            continue outer
         }
         
         // If we reach here the output will be the next year with distinct digits
         break inner
-        
+            
     }
     
     break outer
+    
 }
 
 print("The next year with distinct digits will be \(validInput)")
+
